@@ -30,8 +30,8 @@
     }
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
       margin-top: 1rem;
     }
     .product {
@@ -43,24 +43,28 @@
     }
     .product img {
       width: 100%;
-      height: 180px;
+      height: 150px;
       object-fit: cover;
       border-radius: 6px;
     }
     .product h3 {
-      margin-top: 1rem;
+      margin-top: 0.8rem;
+      font-size: 1rem;
     }
     .product p {
       color: #555;
+      font-size: 0.9rem;
     }
-    .product a {
-      display: inline-block;
-      margin-top: 0.5rem;
-      padding: 0.5rem 1rem;
+    .product a, .product button {
+      display: block;
+      margin: 0.5rem auto;
+      padding: 0.4rem 0.8rem;
       background-color: #111;
       color: white;
+      border: none;
       border-radius: 5px;
-      text-decoration: none;
+      cursor: pointer;
+      width: 80%;
     }
     footer {
       background: #222;
@@ -73,83 +77,143 @@
       color: #00e676;
       text-decoration: none;
     }
+    #orderForm {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 2rem;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      z-index: 10;
+      width: 90%;
+      max-width: 400px;
+    }
+    #orderForm input, #orderForm select {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+    }
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 5;
+    }
   </style>
 </head>
 <body>
-
   <header>Deals by Brandon</header>
 
   <section>
-    <h2>🛠️ Gadgets</h2>
+    <h2>🛒 Featured Products</h2>
     <div class="product-grid">
       <div class="product">
         <img src="https://i.imgur.com/xvlkPwF.png" alt="Bluetooth Speaker">
-        <h3>Portable Bluetooth Speaker</h3>
-        <p>Compact and powerful with deep bass. Great sound under Ksh 2,000.</p>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Portable Bluetooth Speaker.">Shop Now</a>
+        <h3>Bluetooth Speaker</h3>
+        <p>Portable and powerful. Ksh 2,000</p>
+        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Bluetooth Speaker.">Shop Now</a>
+        <button onclick="openForm('Bluetooth Speaker')">Place Order</button>
       </div>
       <div class="product">
         <img src="https://i.imgur.com/UNPl1T6.png" alt="Smartwatch">
         <h3>Fitness Smartwatch</h3>
-        <p>Tracks steps, sleep & heart rate. Battery lasts days. Just Ksh 1,800.</p>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Fitness Smartwatch.">Shop Now</a>
+        <p>Tracks health metrics. Ksh 1,800</p>
+        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Smartwatch.">Shop Now</a>
+        <button onclick="openForm('Smartwatch')">Place Order</button>
       </div>
-    </div>
-
-    <h2>🧠 Digital Tools</h2>
-    <div class="product-grid">
       <div class="product">
         <img src="https://i.imgur.com/xPcrpbG.png" alt="Password Manager">
         <h3>Password Manager</h3>
-        <p>Encrypted vault & autofill. Free plan & upgrade from Ksh 500/month.</p>
+        <p>Secure your accounts. Ksh 500/month</p>
         <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Password Manager.">Shop Now</a>
+        <button onclick="openForm('Password Manager')">Place Order</button>
       </div>
       <div class="product">
         <img src="https://i.imgur.com/ojBmnCv.png" alt="VPN">
         <h3>VPN Access</h3>
-        <p>Browse safely, unlock global content. Plans from Ksh 250/week.</p>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the VPN Access.">Shop Now</a>
+        <p>Browse safely. Ksh 250/week</p>
+        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the VPN.">Shop Now</a>
+        <button onclick="openForm('VPN Access')">Place Order</button>
       </div>
-    </div>
-
-    <h2>💅 Beauty</h2>
-    <div class="product-grid">
       <div class="product">
         <img src="https://i.imgur.com/UL1fr6V.png" alt="Facial Steamer">
         <h3>Facial Steamer</h3>
-        <p>At-home spa for deep skin cleanse. Affordable at Ksh 1,499.</p>
+        <p>Deep skin cleanse. Ksh 1,499</p>
         <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Facial Steamer.">Shop Now</a>
+        <button onclick="openForm('Facial Steamer')">Place Order</button>
       </div>
       <div class="product">
         <img src="https://i.imgur.com/etHfsl0.png" alt="Vitamin C Serum">
         <h3>Vitamin C Serum</h3>
-        <p>Brightens, hydrates & evens tone. Effective at Ksh 950 only.</p>
+        <p>Brightens skin. Ksh 950</p>
         <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Vitamin C Serum.">Shop Now</a>
+        <button onclick="openForm('Vitamin C Serum')">Place Order</button>
       </div>
-    </div>
-
-    <h2>❤️ Health</h2>
-    <div class="product-grid">
       <div class="product">
         <img src="https://i.imgur.com/DFVPFBg.png" alt="BP Monitor">
-        <h3>Digital BP Monitor</h3>
-        <p>Track your health from home. Easy to use. Just Ksh 2,999.</p>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Digital BP Monitor.">Shop Now</a>
+        <h3>BP Monitor</h3>
+        <p>Monitor health. Ksh 2,999</p>
+        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the BP Monitor.">Shop Now</a>
+        <button onclick="openForm('BP Monitor')">Place Order</button>
       </div>
       <div class="product">
-        <img src="https://i.imgur.com/SZsMZ8v.png" alt="Immunity Supplements">
+        <img src="https://i.imgur.com/SZsMZ8v.png" alt="Immunity Booster">
         <h3>Immunity Supplements</h3>
-        <p>Natural vitamins to boost strength. From Ksh 1,200.</p>
+        <p>Boost your immunity. Ksh 1,200</p>
         <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Immunity Supplements.">Shop Now</a>
+        <button onclick="openForm('Immunity Supplements')">Place Order</button>
       </div>
     </div>
   </section>
 
+  <div id="overlay"></div>
+  <div id="orderForm">
+    <h3>Place Your Order</h3>
+    <form onsubmit="submitOrder(); return false;">
+      <input type="text" id="customerName" placeholder="Your Name" required />
+      <input type="tel" id="customerPhone" placeholder="Phone Number" required />
+      <input type="text" id="productName" readonly />
+      <select id="delivery">
+        <option value="CBD">Within CBD – Free</option>
+        <option value="Nairobi">Within Nairobi – Ksh 250</option>
+        <option value="Parcel">Parcel – Ksh 600</option>
+      </select>
+      <button type="submit">Send Order</button>
+      <button type="button" onclick="closeForm()">Cancel</button>
+    </form>
+  </div>
+
   <footer>
     Contact: <a href="mailto:brandongatimu212@gmail.com">brandongatimu212@gmail.com</a> |
-    <a href="https://wa.me/254790732098" target="_blank">WhatsApp Me</a>
+    <a href="https://wa.me/254790732098">WhatsApp</a>
     <p>&copy; 2025 Deals by Brandon</p>
   </footer>
 
+  <script>
+    function openForm(product) {
+      document.getElementById("productName").value = product;
+      document.getElementById("orderForm").style.display = "block";
+      document.getElementById("overlay").style.display = "block";
+    }
+    function closeForm() {
+      document.getElementById("orderForm").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
+    }
+    function submitOrder() {
+      const name = document.getElementById("customerName").value;
+      const phone = document.getElementById("customerPhone").value;
+      const product = document.getElementById("productName").value;
+      const delivery = document.getElementById("delivery").value;
+      alert(`Order placed!\nName: ${name}\nPhone: ${phone}\nProduct: ${product}\nDelivery: ${delivery}`);
+      closeForm();
+    }
+  </script>
 </body>
 </html>
