@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Deals by Brandon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      font-family: 'Poppins', sans-serif;
+      background: #f5f5f5;
       margin: 0;
       padding: 0;
     }
@@ -30,7 +31,7 @@
     }
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
       margin-top: 1rem;
     }
@@ -57,30 +58,22 @@
       display: inline-block;
       margin-top: 0.5rem;
       padding: 0.5rem 1rem;
-      background-color: #111;
+      background-color: #00c853;
       color: white;
       border-radius: 5px;
       text-decoration: none;
       margin-right: 0.5rem;
+      cursor: pointer;
     }
-    footer {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-    footer a {
-      color: #00e676;
-      text-decoration: none;
+    .form-container {
+      display: none;
+      margin-top: 1rem;
     }
     form {
-      background: white;
-      max-width: 500px;
-      margin: 2rem auto;
-      padding: 2rem;
+      background: #fff;
+      padding: 1rem;
       border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
     form input, form textarea {
       width: 100%;
@@ -96,103 +89,45 @@
       border: none;
       border-radius: 5px;
     }
-  </style>
-
-  <!-- Google Analytics (replace with your real GA ID) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-
-    function trackClick(productName) {
-      console.log("Product clicked:", productName);
-      gtag('event', 'click', {
-        event_category: 'Product',
-        event_label: productName
-      });
+    .confirmation {
+      display: none;
+      color: green;
+      margin-top: 1rem;
+      font-weight: bold;
     }
-
-    window.onload = function() {
-      window.scrollTo(0, 0);
-    };
-  </script>
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    footer a {
+      color: #00e676;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-
   <header>Deals by Brandon</header>
 
   <section>
     <h2>🛠️ Gadgets</h2>
     <div class="product-grid">
       <div class="product">
-        <img src="https://i.imgur.com/kEqVGV5.jpg" alt="Bluetooth Speaker">
+        <img src="https://raw.githubusercontent.com/huffy212/assets/main/speaker.jpg" alt="Bluetooth Speaker">
         <h3>Portable Bluetooth Speaker</h3>
         <p>Compact and powerful with deep bass. Great sound under Ksh 2,000.</p>
-        <a href="#" onclick="trackClick('Bluetooth Speaker')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the Portable Bluetooth Speaker via Mpesa">Buy via Mpesa</a>
-      </div>
-      <div class="product">
-        <img src="https://i.imgur.com/0QJ2PZZ.jpg" alt="Smart Watch">
-        <h3>Fitness Smartwatch</h3>
-        <p>Tracks steps, sleep & heart rate. Battery lasts days. Just Ksh 1,800.</p>
-        <a href="#" onclick="trackClick('Smartwatch')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the Fitness Smartwatch via Mpesa">Buy via Mpesa</a>
-      </div>
-    </div>
-
-    <h2>🧠 Digital Tools</h2>
-    <div class="product-grid">
-      <div class="product">
-        <img src="https://i.imgur.com/BsjzFoH.png" alt="Password Manager">
-        <h3>Secure Password Manager</h3>
-        <p>Encrypted vault + auto-fill. Free plan & upgrade from Ksh 500/month.</p>
-        <a href="#" onclick="trackClick('Password Manager')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the Password Manager via Mpesa">Buy via Mpesa</a>
-      </div>
-      <div class="product">
-        <img src="https://i.imgur.com/p0oPKG4.png" alt="VPN Service">
-        <h3>Private VPN Access</h3>
-        <p>Browse safely, unlock global content. Plans from Ksh 250/week.</p>
-        <a href="#" onclick="trackClick('VPN')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the VPN Service via Mpesa">Buy via Mpesa</a>
-      </div>
-    </div>
-
-    <h2>💅 Beauty</h2>
-    <div class="product-grid">
-      <div class="product">
-        <img src="https://i.imgur.com/UZD8exW.jpg" alt="Facial Steamer">
-        <h3>Facial Steamer Pro</h3>
-        <p>At-home spa for deep skin cleanse. Affordable at Ksh 1,499.</p>
-        <a href="#" onclick="trackClick('Facial Steamer')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the Facial Steamer Pro via Mpesa">Buy via Mpesa</a>
-      </div>
-      <div class="product">
-        <img src="https://i.imgur.com/cDlIwwF.jpg" alt="Face Serum">
-        <h3>Vitamin C Face Serum</h3>
-        <p>Brightens, hydrates & evens tone. Effective at Ksh 950 only.</p>
-        <a href="#" onclick="trackClick('Face Serum')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the Vitamin C Face Serum via Mpesa">Buy via Mpesa</a>
-      </div>
-    </div>
-
-    <h2>❤️ Health</h2>
-    <div class="product-grid">
-      <div class="product">
-        <img src="https://i.imgur.com/1yxajIm.jpg" alt="BP Monitor">
-        <h3>Digital BP Monitor</h3>
-        <p>Track your health from home. Easy to use. Just Ksh 2,999.</p>
-        <a href="#" onclick="trackClick('BP Monitor')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the BP Monitor via Mpesa">Buy via Mpesa</a>
-      </div>
-      <div class="product">
-        <img src="https://i.imgur.com/baj6QuF.jpg" alt="Supplements">
-        <h3>Immunity Booster Supplements</h3>
-        <p>All-natural vitamins to keep you strong. From Ksh 1,200.</p>
-        <a href="#" onclick="trackClick('Supplements')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the Immunity Booster Supplements via Mpesa">Buy via Mpesa</a>
+        <a onclick="toggleForm('form1')">Place Order</a>
+        <div class="form-container" id="form1">
+          <form onsubmit="return confirmOrder(event, 'Portable Bluetooth Speaker')">
+            <input type="text" placeholder="Your Name" required>
+            <input type="text" placeholder="Phone Number" required>
+            <textarea placeholder="Delivery Location + Notes" required></textarea>
+            <button type="submit">Send Order</button>
+          </form>
+          <div class="confirmation">✅ Order received! We'll contact you shortly.</div>
+        </div>
       </div>
     </div>
   </section>
@@ -203,16 +138,20 @@
     <p>&copy; 2025 Deals by Brandon</p>
   </footer>
 
-  <section>
-    <h2 style="text-align:center;">📝 Order Request Form</h2>
-    <form action="https://formsubmit.co/brandongatimu212@gmail.com" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <input type="text" name="phone" placeholder="Phone Number (Mpesa)" required>
-      <textarea name="message" placeholder="Product you're interested in, delivery location, etc..." required></textarea>
-      <button type="submit">Send Order</button>
-    </form>
-  </section>
+  <script>
+    function toggleForm(id) {
+      document.querySelectorAll('.form-container').forEach(f => f.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
 
+    function confirmOrder(event, product) {
+      event.preventDefault();
+      const form = event.target;
+      form.style.display = 'none';
+      form.nextElementSibling.style.display = 'block';
+      // Optionally send to FormSubmit or your backend
+      return false;
+    }
+  </script>
 </body>
 </html>
