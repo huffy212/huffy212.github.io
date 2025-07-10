@@ -53,15 +53,15 @@
     .product p {
       color: #555;
     }
-    .product a {
-      display: inline-block;
+    .product .contact-seller {
       margin-top: 0.5rem;
-      padding: 0.5rem 1rem;
-      background-color: #111;
-      color: white;
+    }
+    .product select, .product button {
+      padding: 0.5rem;
+      margin-top: 0.5rem;
       border-radius: 5px;
-      text-decoration: none;
-      margin-right: 0.5rem;
+      border: none;
+      font-size: 1rem;
     }
     footer {
       background: #222;
@@ -81,6 +81,7 @@
       padding: 2rem;
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: none;
     }
     form input, form textarea {
       width: 100%;
@@ -98,26 +99,28 @@
     }
   </style>
 
-  <!-- Google Analytics (replace with your real GA ID) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-
     function trackClick(productName) {
       console.log("Product clicked:", productName);
-      gtag('event', 'click', {
-        event_category: 'Product',
-        event_label: productName
-      });
     }
 
-    // Scroll to top on load
-    window.onload = function() {
-      window.scrollTo(0, 0);
-    };
+    function toggleForm(productName) {
+      document.getElementById("orderForm").style.display = 'block';
+      document.getElementById("productInput").value = productName;
+    }
+
+    function showContactOptions(productName) {
+      const method = prompt("Contact seller via:\n1. WhatsApp\n2. Email", "1");
+      if (method === "1") {
+        window.open(`https://wa.me/254790732098?text=Hi Brandon, I'm interested in buying the ${productName}`, '_blank');
+      } else if (method === "2") {
+        window.location.href = `mailto:brandongatimu212@gmail.com?subject=Product Inquiry&body=Hi Brandon, I'm interested in buying the ${productName}`;
+      }
+    }
+
+    function confirmSubmission() {
+      alert("✅ Your order has been received! We will contact you shortly.");
+    }
   </script>
 </head>
 <body>
@@ -131,90 +134,26 @@
         <img src="https://i.imgur.com/kEqVGV5.jpg" alt="Bluetooth Speaker">
         <h3>Portable Bluetooth Speaker</h3>
         <p>Compact and powerful with deep bass. Great sound under Ksh 2,000.</p>
-        <a href="#" onclick="trackClick('Bluetooth Speaker')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the Portable Bluetooth Speaker via Mpesa">Buy via Mpesa</a>
-      </div>
-      <div class="product">
-        <img src="https://i.imgur.com/0QJ2PZZ.jpg" alt="Smart Watch">
-        <h3>Fitness Smartwatch</h3>
-        <p>Tracks steps, sleep & heart rate. Battery lasts days. Just Ksh 1,800.</p>
-        <a href="#" onclick="trackClick('Smartwatch')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the Fitness Smartwatch via Mpesa">Buy via Mpesa</a>
-      </div>
-    </div>
-
-    <h2>🧠 Digital Tools</h2>
-    <div class="product-grid">
-      <div class="product">
-        <img src="https://i.imgur.com/BsjzFoH.png" alt="Password Manager">
-        <h3>Secure Password Manager</h3>
-        <p>Encrypted vault + auto-fill. Free plan & upgrade from Ksh 500/month.</p>
-        <a href="#" onclick="trackClick('Password Manager')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the Password Manager via Mpesa">Buy via Mpesa</a>
-      </div>
-      <div class="product">
-        <img src="https://i.imgur.com/p0oPKG4.png" alt="VPN Service">
-        <h3>Private VPN Access</h3>
-        <p>Browse safely, unlock global content. Plans from Ksh 250/week.</p>
-        <a href="#" onclick="trackClick('VPN')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the VPN Service via Mpesa">Buy via Mpesa</a>
-      </div>
-    </div>
-
-    <h2>💅 Beauty</h2>
-    <div class="product-grid">
-      <div class="product">
-        <img src="https://i.imgur.com/UZD8exW.jpg" alt="Facial Steamer">
-        <h3>Facial Steamer Pro</h3>
-        <p>At-home spa for deep skin cleanse. Affordable at Ksh 1,499.</p>
-        <a href="#" onclick="trackClick('Facial Steamer')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the Facial Steamer Pro via Mpesa">Buy via Mpesa</a>
-      </div>
-      <div class="product">
-        <img src="https://i.imgur.com/cDlIwwF.jpg" alt="Face Serum">
-        <h3>Vitamin C Face Serum</h3>
-        <p>Brightens, hydrates & evens tone. Effective at Ksh 950 only.</p>
-        <a href="#" onclick="trackClick('Face Serum')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the Vitamin C Face Serum via Mpesa">Buy via Mpesa</a>
-      </div>
-    </div>
-
-    <h2>❤️ Health</h2>
-    <div class="product-grid">
-      <div class="product">
-        <img src="https://i.imgur.com/1yxajIm.jpg" alt="BP Monitor">
-        <h3>Digital BP Monitor</h3>
-        <p>Track your health from home. Easy to use. Just Ksh 2,999.</p>
-        <a href="#" onclick="trackClick('BP Monitor')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the BP Monitor via Mpesa">Buy via Mpesa</a>
-      </div>
-      <div class="product">
-        <img src="https://i.imgur.com/baj6QuF.jpg" alt="Supplements">
-        <h3>Immunity Booster Supplements</h3>
-        <p>All-natural vitamins to keep you strong. From Ksh 1,200.</p>
-        <a href="#" onclick="trackClick('Supplements')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the Immunity Booster Supplements via Mpesa">Buy via Mpesa</a>
+        <button onclick="showContactOptions('Portable Bluetooth Speaker')">Contact Seller</button>
+        <button onclick="toggleForm('Portable Bluetooth Speaker')">Buy Now</button>
       </div>
     </div>
   </section>
+
+  <form id="orderForm" action="https://formsubmit.co/brandongatimu212@gmail.com" method="POST" onsubmit="confirmSubmission()">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <input type="text" name="phone" placeholder="Phone Number (Mpesa)" required>
+    <input type="text" id="productInput" name="product" readonly>
+    <textarea name="message" placeholder="Delivery location + any extra info..." required></textarea>
+    <button type="submit">Send Order</button>
+  </form>
 
   <footer>
     Contact: <a href="mailto:brandongatimu212@gmail.com">brandongatimu212@gmail.com</a> |
     <a href="https://wa.me/254790732098" target="_blank">WhatsApp Me</a>
     <p>&copy; 2025 Deals by Brandon</p>
   </footer>
-
-  <!-- FORM NOW PLACED AFTER FOOTER -->
-  <section>
-    <h2 style="text-align:center;">📝 Order Request Form</h2>
-    <form action="https://formsubmit.co/brandongatimu212@gmail.com" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <input type="text" name="phone" placeholder="Phone Number (Mpesa)" required>
-      <textarea name="message" placeholder="Product you're interested in, delivery location, etc..." required></textarea>
-      <button type="submit">Send Order</button>
-    </form>
-  </section>
 
 </body>
 </html>
