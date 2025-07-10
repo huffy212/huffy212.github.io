@@ -115,62 +115,7 @@
   <section>
     <h2>🛒 Featured Products</h2>
     <div class="product-grid">
-      <div class="product">
-        <img src="https://i.imgur.com/xvlkPwF.png" alt="Bluetooth Speaker">
-        <h3>Bluetooth Speaker</h3>
-        <p>Portable and powerful speaker with deep bass. Ksh 2,000</p>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Bluetooth Speaker.">Shop Now</a>
-        <button onclick="openForm('Bluetooth Speaker')">Place Order</button>
-      </div>
-      <div class="product">
-        <img src="https://i.imgur.com/UNPl1T6.png" alt="Smartwatch">
-        <h3>Fitness Smartwatch</h3>
-        <p>Tracks your health, heart rate & steps. Ksh 1,800</p>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Smartwatch.">Shop Now</a>
-        <button onclick="openForm('Smartwatch')">Place Order</button>
-      </div>
-      <div class="product">
-        <img src="https://i.imgur.com/xPcrpbG.png" alt="Password Manager">
-        <h3>Password Manager</h3>
-        <p>Store your passwords securely. Ksh 500/month</p>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Password Manager.">Shop Now</a>
-        <button onclick="openForm('Password Manager')">Place Order</button>
-      </div>
-      <div class="product">
-        <img src="https://i.imgur.com/ojBmnCv.png" alt="VPN">
-        <h3>VPN Access</h3>
-        <p>Protect your privacy online. Ksh 250/week</p>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the VPN.">Shop Now</a>
-        <button onclick="openForm('VPN Access')">Place Order</button>
-      </div>
-      <div class="product">
-        <img src="https://i.imgur.com/UL1fr6V.png" alt="Facial Steamer">
-        <h3>Facial Steamer</h3>
-        <p>Opens pores and deep cleans your skin. Ksh 1,499</p>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Facial Steamer.">Shop Now</a>
-        <button onclick="openForm('Facial Steamer')">Place Order</button>
-      </div>
-      <div class="product">
-        <img src="https://i.imgur.com/etHfsl0.png" alt="Vitamin C Serum">
-        <h3>Vitamin C Serum</h3>
-        <p>Glowing skin & spot reduction. Ksh 950</p>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Vitamin C Serum.">Shop Now</a>
-        <button onclick="openForm('Vitamin C Serum')">Place Order</button>
-      </div>
-      <div class="product">
-        <img src="https://i.imgur.com/DFVPFBg.png" alt="BP Monitor">
-        <h3>BP Monitor</h3>
-        <p>Track your blood pressure at home. Ksh 2,999</p>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the BP Monitor.">Shop Now</a>
-        <button onclick="openForm('BP Monitor')">Place Order</button>
-      </div>
-      <div class="product">
-        <img src="https://i.imgur.com/SZsMZ8v.png" alt="Immunity Booster">
-        <h3>Immunity Supplements</h3>
-        <p>Boost your immunity & stay strong. Ksh 1,200</p>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Immunity Supplements.">Shop Now</a>
-        <button onclick="openForm('Immunity Supplements')">Place Order</button>
-      </div>
+      <!-- Existing products go here -->
     </div>
   </section>
 
@@ -203,15 +148,32 @@
       document.getElementById("orderForm").style.display = "block";
       document.getElementById("overlay").style.display = "block";
     }
+
     function closeForm() {
       document.getElementById("orderForm").style.display = "none";
       document.getElementById("overlay").style.display = "none";
     }
+
     function submitOrder() {
       const name = document.getElementById("customerName").value;
       const phone = document.getElementById("customerPhone").value;
       const product = document.getElementById("productName").value;
       const delivery = document.getElementById("delivery").value;
+
+      fetch("https://script.google.com/macros/s/AKfycbzaZrwI02vHJaYUdZKkssKneq3fnU_XFMbWtEVCCUAp_bU8-BWsrj7diHJpiSnX1OKtUQ/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          phone,
+          product,
+          delivery
+        }),
+      });
+
       alert(`Order placed!\nName: ${name}\nPhone: ${phone}\nProduct: ${product}\nDelivery: ${delivery}`);
       closeForm();
     }
