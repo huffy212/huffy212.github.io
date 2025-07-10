@@ -53,15 +53,28 @@
     .product p {
       color: #555;
     }
-    .product .contact-seller {
+    .product .actions {
       margin-top: 0.5rem;
     }
     .product select, .product button {
       padding: 0.5rem;
-      margin-top: 0.5rem;
       border-radius: 5px;
       border: none;
-      font-size: 1rem;
+      margin-right: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .contact-dropdown {
+      display: none;
+      margin-top: 0.5rem;
+    }
+    .contact-dropdown a {
+      display: inline-block;
+      background-color: #111;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      margin: 0.25rem;
     }
     footer {
       background: #222;
@@ -97,63 +110,92 @@
       border: none;
       border-radius: 5px;
     }
+    #confirmation {
+      text-align: center;
+      font-size: 1.2rem;
+      color: green;
+      display: none;
+    }
   </style>
-
   <script>
-    function trackClick(productName) {
-      console.log("Product clicked:", productName);
+    function toggleContact(id) {
+      document.querySelectorAll('.contact-dropdown').forEach(e => e.style.display = 'none');
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === 'block' ? 'none' : 'block';
     }
 
-    function toggleForm(productName) {
-      document.getElementById("orderForm").style.display = 'block';
-      document.getElementById("productInput").value = productName;
+    function showForm(product) {
+      const form = document.getElementById('orderForm');
+      form.style.display = 'block';
+      document.getElementById('productInput').value = product;
+      window.scrollTo({ top: form.offsetTop, behavior: 'smooth' });
     }
 
-    function showContactOptions(productName) {
-      const method = prompt("Contact seller via:\n1. WhatsApp\n2. Email", "1");
-      if (method === "1") {
-        window.open(`https://wa.me/254790732098?text=Hi Brandon, I'm interested in buying the ${productName}`, '_blank');
-      } else if (method === "2") {
-        window.location.href = `mailto:brandongatimu212@gmail.com?subject=Product Inquiry&body=Hi Brandon, I'm interested in buying the ${productName}`;
-      }
-    }
-
-    function confirmSubmission() {
-      alert("✅ Your order has been received! We will contact you shortly.");
+    function showConfirmation() {
+      document.getElementById('confirmation').style.display = 'block';
+      document.getElementById('orderForm').reset();
+      document.getElementById('orderForm').style.display = 'none';
     }
   </script>
 </head>
 <body>
 
-  <header>Deals by Brandon</header>
+<header>Deals by Brandon</header>
 
-  <section>
-    <h2>🛠️ Gadgets</h2>
-    <div class="product-grid">
-      <div class="product">
-        <img src="https://i.imgur.com/kEqVGV5.jpg" alt="Bluetooth Speaker">
-        <h3>Portable Bluetooth Speaker</h3>
-        <p>Compact and powerful with deep bass. Great sound under Ksh 2,000.</p>
-        <button onclick="showContactOptions('Portable Bluetooth Speaker')">Contact Seller</button>
-        <button onclick="toggleForm('Portable Bluetooth Speaker')">Buy Now</button>
+<section>
+  <h2>🛠️ Gadgets</h2>
+  <div class="product-grid">
+    <div class="product">
+      <img src="https://i.imgur.com/kEqVGV5.jpg" alt="Bluetooth Speaker">
+      <h3>Portable Bluetooth Speaker</h3>
+      <p>Compact and powerful with deep bass. Great sound under Ksh 2,000.</p>
+      <div class="actions">
+        <button onclick="toggleContact('contact1')">Contact Seller</button>
+        <button onclick="showForm('Portable Bluetooth Speaker')">Buy Now</button>
+        <div id="contact1" class="contact-dropdown">
+          <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Portable Bluetooth Speaker">WhatsApp</a>
+          <a href="mailto:brandongatimu212@gmail.com?subject=Product%20Inquiry&body=I want to buy the Portable Bluetooth Speaker">Email</a>
+        </div>
       </div>
     </div>
-  </section>
 
-  <form id="orderForm" action="https://formsubmit.co/brandongatimu212@gmail.com" method="POST" onsubmit="confirmSubmission()">
+    <div class="product">
+      <img src="https://i.imgur.com/0QJ2PZZ.jpg" alt="Smart Watch">
+      <h3>Fitness Smartwatch</h3>
+      <p>Tracks steps, sleep & heart rate. Battery lasts days. Just Ksh 1,800.</p>
+      <div class="actions">
+        <button onclick="toggleContact('contact2')">Contact Seller</button>
+        <button onclick="showForm('Fitness Smartwatch')">Buy Now</button>
+        <div id="contact2" class="contact-dropdown">
+          <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Fitness Smartwatch">WhatsApp</a>
+          <a href="mailto:brandongatimu212@gmail.com?subject=Product%20Inquiry&body=I want to buy the Fitness Smartwatch">Email</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ ADD MORE PRODUCTS AS NEEDED... -->
+
+<section>
+  <h2 style="text-align:center;">📝 Order Request Form</h2>
+  <div id="confirmation">✅ Order received! We'll contact you shortly.</div>
+  <form id="orderForm" action="https://formsubmit.co/brandongatimu212@gmail.com" method="POST" onsubmit="showConfirmation()">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="product" id="productInput" placeholder="Product Name" readonly required>
     <input type="text" name="name" placeholder="Your Name" required>
     <input type="email" name="email" placeholder="Your Email" required>
     <input type="text" name="phone" placeholder="Phone Number (Mpesa)" required>
-    <input type="text" id="productInput" name="product" readonly>
-    <textarea name="message" placeholder="Delivery location + any extra info..." required></textarea>
+    <textarea name="message" placeholder="Delivery location & any other info..." required></textarea>
     <button type="submit">Send Order</button>
   </form>
+</section>
 
-  <footer>
-    Contact: <a href="mailto:brandongatimu212@gmail.com">brandongatimu212@gmail.com</a> |
-    <a href="https://wa.me/254790732098" target="_blank">WhatsApp Me</a>
-    <p>&copy; 2025 Deals by Brandon</p>
-  </footer>
+<footer>
+  Contact: <a href="mailto:brandongatimu212@gmail.com">brandongatimu212@gmail.com</a> |
+  <a href="https://wa.me/254790732098" target="_blank">WhatsApp Me</a>
+  <p>&copy; 2025 Deals by Brandon</p>
+</footer>
 
 </body>
 </html>
