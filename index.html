@@ -9,14 +9,13 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f4f4f4;
-      color: #333;
+      background: #f9f9f9;
     }
     header {
       background-color: #111;
-      color: #fff;
-      padding: 1rem;
+      color: white;
       text-align: center;
+      padding: 1rem;
     }
     .category {
       padding: 1rem;
@@ -27,22 +26,22 @@
     }
     .products {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1rem;
       padding: 0 1rem;
     }
     .product {
       background: #fff;
-      border-radius: 8px;
       padding: 1rem;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       text-align: center;
     }
     .product img {
       width: 100%;
-      height: 150px;
+      height: 160px;
       object-fit: cover;
-      border-radius: 6px;
+      border-radius: 8px;
       background: #ddd;
     }
     .product p {
@@ -51,23 +50,26 @@
     }
     .product button {
       background-color: #28a745;
-      color: #fff;
+      color: white;
       border: none;
       padding: 0.5rem 1rem;
       margin: 0.3rem;
-      border-radius: 4px;
+      border-radius: 5px;
       cursor: pointer;
     }
     .form-popup {
       display: none;
       position: fixed;
-      top: 20%;
+      top: 15%;
       left: 50%;
-      transform: translate(-50%, -20%);
-      background: #fff;
-      padding: 1rem;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      z-index: 10;
+      transform: translate(-50%, 0);
+      background: white;
+      padding: 1.5rem;
+      z-index: 1001;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
     .form-popup form {
       display: flex;
@@ -75,23 +77,31 @@
     }
     .form-popup input, .form-popup select {
       margin-bottom: 1rem;
-      padding: 0.5rem;
+      padding: 0.6rem;
+      font-size: 1rem;
     }
     .overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
       display: none;
-      z-index: 5;
+    }
+    footer {
+      background-color: #111;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Deals by Brandon</h1>
+    <p>Affordable Gadgets, Digital Tools, Beauty & Health</p>
   </header>
 
   <div class="overlay" id="overlay" onclick="closeForm()"></div>
@@ -115,16 +125,28 @@
     <h2>Gadgets</h2>
     <div class="products">
       <div class="product">
-        <img alt="Smartwatch" />
-        <p>Stylish smartwatch with fitness tracking & notifications.</p>
+        <img src="https://via.placeholder.com/300x160?text=Smartwatch" alt="Smartwatch" />
+        <p>Smartwatch with health tracking, notifications & stylish design.</p>
         <button onclick="shopNow('Smartwatch')">Shop Now</button>
         <button onclick="openForm('Smartwatch')">Place Order</button>
       </div>
       <div class="product">
-        <img alt="Earbuds" />
-        <p>Wireless earbuds with bass boost and clear mic.</p>
-        <button onclick="shopNow('Earbuds')">Shop Now</button>
-        <button onclick="openForm('Earbuds')">Place Order</button>
+        <img src="https://via.placeholder.com/300x160?text=Wireless+Earbuds" alt="Earbuds" />
+        <p>Wireless earbuds with noise cancellation and deep bass.</p>
+        <button onclick="shopNow('Wireless Earbuds')">Shop Now</button>
+        <button onclick="openForm('Wireless Earbuds')">Place Order</button>
+      </div>
+      <div class="product">
+        <img src="https://via.placeholder.com/300x160?text=Mini+Tripod" alt="Tripod" />
+        <p>Flexible tripod stand for phones & cameras — portable and sturdy.</p>
+        <button onclick="shopNow('Mini Tripod')">Shop Now</button>
+        <button onclick="openForm('Mini Tripod')">Place Order</button>
+      </div>
+      <div class="product">
+        <img src="https://via.placeholder.com/300x160?text=Bluetooth+Speaker" alt="Speaker" />
+        <p>Portable Bluetooth speaker with rich bass & long battery life.</p>
+        <button onclick="shopNow('Bluetooth Speaker')">Shop Now</button>
+        <button onclick="openForm('Bluetooth Speaker')">Place Order</button>
       </div>
     </div>
   </div>
@@ -132,41 +154,46 @@
   <script>
     function shopNow(product) {
       const message = `Hello Brandon, I'm interested in the ${product}. Please guide me.`;
-      const encodedMsg = encodeURIComponent(message);
-      window.open(`https://wa.me/254790732098?text=${encodedMsg}`, '_blank');
+      window.open(`https://wa.me/254790732098?text=${encodeURIComponent(message)}`, '_blank');
     }
 
     function openForm(product) {
-      document.getElementById('overlay').style.display = 'block';
-      document.getElementById('orderForm').style.display = 'block';
-      document.getElementById('productName').value = product;
+      document.getElementById("overlay").style.display = "block";
+      document.getElementById("orderForm").style.display = "block";
+      document.getElementById("productName").value = product;
     }
 
     function closeForm() {
-      document.getElementById('overlay').style.display = 'none';
-      document.getElementById('orderForm').style.display = 'none';
+      document.getElementById("overlay").style.display = "none";
+      document.getElementById("orderForm").style.display = "none";
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
-      const form = document.getElementById('form');
-      form.addEventListener('submit', function (e) {
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("form");
+      form.addEventListener("submit", function (e) {
         e.preventDefault();
         const data = new FormData(form);
-        fetch('https://script.google.com/macros/s/AKfycbzaZrwI02vHJaYUdZKkssKneq3fnU_XFMbWtEVCCUAp_bU8-BWsrj7diHJpiSnX1OKtUQ/exec', {
-          method: 'POST',
+        fetch("https://script.google.com/macros/s/AKfycbzaZrwI02vHJaYUdZKkssKneq3fnU_XFMbWtEVCCUAp_bU8-BWsrj7diHJpiSnX1OKtUQ/exec", {
+          method: "POST",
           body: data
         })
         .then(res => res.text())
         .then(response => {
-          alert('Order received! We will contact you shortly.');
+          alert("Order received! We'll contact you shortly.");
           closeForm();
         })
-        .catch(error => {
-          alert('Something went wrong. Please try again.');
-          console.error(error);
+        .catch(err => {
+          console.error(err);
+          alert("Something went wrong. Try again later.");
         });
       });
     });
   </script>
+
+  <footer>
+    <p>Contact us: 0790732098 | brandongatimu212@gmail.com</p>
+    <p>© 2025 Deals by Brandon. All rights reserved.</p>
+  </footer>
+
 </body>
 </html>
