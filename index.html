@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Deals by Brandon</title>
   <style>
     body {
@@ -30,7 +30,7 @@
     }
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       margin-top: 1rem;
     }
@@ -61,7 +61,6 @@
       color: white;
       border-radius: 5px;
       text-decoration: none;
-      margin-right: 0.5rem;
     }
     footer {
       background: #222;
@@ -74,51 +73,7 @@
       color: #00e676;
       text-decoration: none;
     }
-    form {
-      background: white;
-      max-width: 500px;
-      margin: 2rem auto;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-    form input, form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    form button {
-      padding: 0.75rem 2rem;
-      background-color: #111;
-      color: white;
-      border: none;
-      border-radius: 5px;
-    }
   </style>
-
-  <!-- Google Analytics (replace with your real GA ID) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-
-    function trackClick(productName) {
-      console.log("Product clicked:", productName);
-      gtag('event', 'click', {
-        event_category: 'Product',
-        event_label: productName
-      });
-    }
-
-    // Scroll to top on load
-    window.onload = function() {
-      window.scrollTo(0, 0);
-    };
-  </script>
 </head>
 <body>
 
@@ -128,72 +83,64 @@
     <h2>🛠️ Gadgets</h2>
     <div class="product-grid">
       <div class="product">
-        <img src="https://i.imgur.com/kEqVGV5.jpg" alt="Bluetooth Speaker">
+        <img src="https://i.imgur.com/xvlkPwF.png" alt="Bluetooth Speaker">
         <h3>Portable Bluetooth Speaker</h3>
         <p>Compact and powerful with deep bass. Great sound under Ksh 2,000.</p>
-        <a href="#" onclick="trackClick('Bluetooth Speaker')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the Portable Bluetooth Speaker via Mpesa">Buy via Mpesa</a>
+        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Portable Bluetooth Speaker.">Shop Now</a>
       </div>
       <div class="product">
-        <img src="https://i.imgur.com/0QJ2PZZ.jpg" alt="Smart Watch">
+        <img src="https://i.imgur.com/UNPl1T6.png" alt="Smartwatch">
         <h3>Fitness Smartwatch</h3>
         <p>Tracks steps, sleep & heart rate. Battery lasts days. Just Ksh 1,800.</p>
-        <a href="#" onclick="trackClick('Smartwatch')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the Fitness Smartwatch via Mpesa">Buy via Mpesa</a>
+        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Fitness Smartwatch.">Shop Now</a>
       </div>
     </div>
 
     <h2>🧠 Digital Tools</h2>
     <div class="product-grid">
       <div class="product">
-        <img src="https://i.imgur.com/BsjzFoH.png" alt="Password Manager">
-        <h3>Secure Password Manager</h3>
-        <p>Encrypted vault + auto-fill. Free plan & upgrade from Ksh 500/month.</p>
-        <a href="#" onclick="trackClick('Password Manager')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the Password Manager via Mpesa">Buy via Mpesa</a>
+        <img src="https://i.imgur.com/xPcrpbG.png" alt="Password Manager">
+        <h3>Password Manager</h3>
+        <p>Encrypted vault & autofill. Free plan & upgrade from Ksh 500/month.</p>
+        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Password Manager.">Shop Now</a>
       </div>
       <div class="product">
-        <img src="https://i.imgur.com/p0oPKG4.png" alt="VPN Service">
-        <h3>Private VPN Access</h3>
+        <img src="https://i.imgur.com/ojBmnCv.png" alt="VPN">
+        <h3>VPN Access</h3>
         <p>Browse safely, unlock global content. Plans from Ksh 250/week.</p>
-        <a href="#" onclick="trackClick('VPN')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the VPN Service via Mpesa">Buy via Mpesa</a>
+        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the VPN Access.">Shop Now</a>
       </div>
     </div>
 
     <h2>💅 Beauty</h2>
     <div class="product-grid">
       <div class="product">
-        <img src="https://i.imgur.com/UZD8exW.jpg" alt="Facial Steamer">
-        <h3>Facial Steamer Pro</h3>
+        <img src="https://i.imgur.com/UL1fr6V.png" alt="Facial Steamer">
+        <h3>Facial Steamer</h3>
         <p>At-home spa for deep skin cleanse. Affordable at Ksh 1,499.</p>
-        <a href="#" onclick="trackClick('Facial Steamer')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the Facial Steamer Pro via Mpesa">Buy via Mpesa</a>
+        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Facial Steamer.">Shop Now</a>
       </div>
       <div class="product">
-        <img src="https://i.imgur.com/cDlIwwF.jpg" alt="Face Serum">
-        <h3>Vitamin C Face Serum</h3>
+        <img src="https://i.imgur.com/etHfsl0.png" alt="Vitamin C Serum">
+        <h3>Vitamin C Serum</h3>
         <p>Brightens, hydrates & evens tone. Effective at Ksh 950 only.</p>
-        <a href="#" onclick="trackClick('Face Serum')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the Vitamin C Face Serum via Mpesa">Buy via Mpesa</a>
+        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Vitamin C Serum.">Shop Now</a>
       </div>
     </div>
 
     <h2>❤️ Health</h2>
     <div class="product-grid">
       <div class="product">
-        <img src="https://i.imgur.com/1yxajIm.jpg" alt="BP Monitor">
+        <img src="https://i.imgur.com/DFVPFBg.png" alt="BP Monitor">
         <h3>Digital BP Monitor</h3>
         <p>Track your health from home. Easy to use. Just Ksh 2,999.</p>
-        <a href="#" onclick="trackClick('BP Monitor')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the BP Monitor via Mpesa">Buy via Mpesa</a>
+        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Digital BP Monitor.">Shop Now</a>
       </div>
       <div class="product">
-        <img src="https://i.imgur.com/baj6QuF.jpg" alt="Supplements">
-        <h3>Immunity Booster Supplements</h3>
-        <p>All-natural vitamins to keep you strong. From Ksh 1,200.</p>
-        <a href="#" onclick="trackClick('Supplements')">Shop Now</a>
-        <a href="https://wa.me/254790732098?text=Hi Brandon, I want to buy the Immunity Booster Supplements via Mpesa">Buy via Mpesa</a>
+        <img src="https://i.imgur.com/SZsMZ8v.png" alt="Immunity Supplements">
+        <h3>Immunity Supplements</h3>
+        <p>Natural vitamins to boost strength. From Ksh 1,200.</p>
+        <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Immunity Supplements.">Shop Now</a>
       </div>
     </div>
   </section>
@@ -203,18 +150,6 @@
     <a href="https://wa.me/254790732098" target="_blank">WhatsApp Me</a>
     <p>&copy; 2025 Deals by Brandon</p>
   </footer>
-
-  <!-- FORM NOW PLACED AFTER FOOTER -->
-  <section>
-    <h2 style="text-align:center;">📝 Order Request Form</h2>
-    <form action="https://formsubmit.co/brandongatimu212@gmail.com" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <input type="text" name="phone" placeholder="Phone Number (Mpesa)" required>
-      <textarea name="message" placeholder="Product you're interested in, delivery location, etc..." required></textarea>
-      <button type="submit">Send Order</button>
-    </form>
-  </section>
 
 </body>
 </html>
