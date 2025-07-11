@@ -53,28 +53,60 @@
     .product p {
       color: #555;
     }
-    .product .actions {
-      margin-top: 0.5rem;
+    .actions {
+      margin-top: 0.8rem;
     }
-    .product select, .product button {
-      padding: 0.5rem;
-      border-radius: 5px;
-      border: none;
-      margin-right: 0.5rem;
-      margin-top: 0.5rem;
-    }
-    .contact-dropdown {
-      display: none;
-      margin-top: 0.5rem;
-    }
-    .contact-dropdown a {
+    .dropdown {
+      position: relative;
       display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    .dropdown-content a {
+      color: black;
+      padding: 10px;
+      text-decoration: none;
+      display: block;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .btn {
+      padding: 0.5rem 1rem;
       background-color: #111;
       color: white;
-      padding: 0.5rem 1rem;
       border-radius: 5px;
       text-decoration: none;
-      margin: 0.25rem;
+      margin-right: 0.5rem;
+    }
+    #order-form {
+      display: none;
+      background: white;
+      max-width: 500px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    #order-form input, #order-form textarea, #order-form select {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #order-form button {
+      padding: 0.75rem 2rem;
+      background-color: #111;
+      color: white;
+      border: none;
+      border-radius: 5px;
     }
     footer {
       background: #222;
@@ -87,109 +119,179 @@
       color: #00e676;
       text-decoration: none;
     }
-    form {
-      background: white;
-      max-width: 500px;
-      margin: 2rem auto;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      display: none;
-    }
-    form input, form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    form button {
-      padding: 0.75rem 2rem;
-      background-color: #111;
-      color: white;
-      border: none;
-      border-radius: 5px;
-    }
-    #confirmation {
-      text-align: center;
-      font-size: 1.2rem;
-      color: green;
-      display: none;
-    }
   </style>
-  <script>
-    function toggleContact(id) {
-      document.querySelectorAll('.contact-dropdown').forEach(e => e.style.display = 'none');
-      const el = document.getElementById(id);
-      el.style.display = el.style.display === 'block' ? 'none' : 'block';
-    }
-
-    function showForm(product) {
-      const form = document.getElementById('orderForm');
-      form.style.display = 'block';
-      document.getElementById('productInput').value = product;
-      window.scrollTo({ top: form.offsetTop, behavior: 'smooth' });
-    }
-
-    function showConfirmation() {
-      document.getElementById('confirmation').style.display = 'block';
-      document.getElementById('orderForm').reset();
-      document.getElementById('orderForm').style.display = 'none';
-    }
-  </script>
 </head>
 <body>
 
 <header>Deals by Brandon</header>
 
 <section>
-  <h2>🛠️ Gadgets</h2>
+  <h2>🔥 Top Deals</h2>
   <div class="product-grid">
+    <!-- Product 1 -->
     <div class="product">
-      <img src="https://i.imgur.com/kEqVGV5.jpg" alt="Bluetooth Speaker">
-      <h3>Portable Bluetooth Speaker</h3>
-      <p>Compact and powerful with deep bass. Great sound under Ksh 2,000.</p>
+      <img src="https://i.imgur.com/aliMSN8.jpg" alt="Product 1">
+      <h3>Smart Fitness Band</h3>
+      <p>Tracks heart rate, steps, sleep – all day. Only Ksh 1,800.</p>
       <div class="actions">
-        <button onclick="toggleContact('contact1')">Contact Seller</button>
-        <button onclick="showForm('Portable Bluetooth Speaker')">Buy Now</button>
-        <div id="contact1" class="contact-dropdown">
-          <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Portable Bluetooth Speaker">WhatsApp</a>
-          <a href="mailto:brandongatimu212@gmail.com?subject=Product%20Inquiry&body=I want to buy the Portable Bluetooth Speaker">Email</a>
+        <div class="dropdown">
+          <span class="btn">Contact Seller</span>
+          <div class="dropdown-content">
+            <a href="https://wa.me/254790732098?text=Hi Brandon, I’m interested in the Smart Fitness Band.">WhatsApp</a>
+            <a href="mailto:brandongatimu212@gmail.com?subject=Smart Fitness Band">Email</a>
+          </div>
         </div>
+        <a href="#" class="btn" onclick="showForm('Smart Fitness Band')">Buy Now</a>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product">
+      <img src="https://i.imgur.com/hwpO2Bi.jpg" alt="Product 2">
+      <h3>Bluetooth Earbuds</h3>
+      <p>Noise canceling, long battery life. Going for Ksh 2,000.</p>
+      <div class="actions">
+        <div class="dropdown">
+          <span class="btn">Contact Seller</span>
+          <div class="dropdown-content">
+            <a href="https://wa.me/254790732098?text=Hi Brandon, I’m interested in the Bluetooth Earbuds.">WhatsApp</a>
+            <a href="mailto:brandongatimu212@gmail.com?subject=Bluetooth Earbuds">Email</a>
+          </div>
+        </div>
+        <a href="#" class="btn" onclick="showForm('Bluetooth Earbuds')">Buy Now</a>
+      </div>
+    </div>
+
+    <!-- Add more products the same way -->
+    <div class="product">
+      <img src="https://i.imgur.com/yZMN7ey.jpg" alt="Product 3">
+      <h3>Facial Steamer</h3>
+      <p>Hydrating facial therapy for clean skin. Ksh 1,499 only.</p>
+      <div class="actions">
+        <div class="dropdown">
+          <span class="btn">Contact Seller</span>
+          <div class="dropdown-content">
+            <a href="https://wa.me/254790732098?text=Hi Brandon, I’m interested in the Facial Steamer.">WhatsApp</a>
+            <a href="mailto:brandongatimu212@gmail.com?subject=Facial Steamer">Email</a>
+          </div>
+        </div>
+        <a href="#" class="btn" onclick="showForm('Facial Steamer')">Buy Now</a>
       </div>
     </div>
 
     <div class="product">
-      <img src="https://i.imgur.com/0QJ2PZZ.jpg" alt="Smart Watch">
-      <h3>Fitness Smartwatch</h3>
-      <p>Tracks steps, sleep & heart rate. Battery lasts days. Just Ksh 1,800.</p>
+      <img src="https://i.imgur.com/v58Qtf4.jpg" alt="Product 4">
+      <h3>VPN Service</h3>
+      <p>Secure your browsing, unblock content. Ksh 250/week.</p>
       <div class="actions">
-        <button onclick="toggleContact('contact2')">Contact Seller</button>
-        <button onclick="showForm('Fitness Smartwatch')">Buy Now</button>
-        <div id="contact2" class="contact-dropdown">
-          <a href="https://wa.me/254790732098?text=Hi Brandon, I'm interested in the Fitness Smartwatch">WhatsApp</a>
-          <a href="mailto:brandongatimu212@gmail.com?subject=Product%20Inquiry&body=I want to buy the Fitness Smartwatch">Email</a>
+        <div class="dropdown">
+          <span class="btn">Contact Seller</span>
+          <div class="dropdown-content">
+            <a href="https://wa.me/254790732098?text=Hi Brandon, I’m interested in the VPN Service.">WhatsApp</a>
+            <a href="mailto:brandongatimu212@gmail.com?subject=VPN Service">Email</a>
+          </div>
         </div>
+        <a href="#" class="btn" onclick="showForm('VPN Service')">Buy Now</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://i.imgur.com/eEqh04C.jpg" alt="Product 5">
+      <h3>Vitamin C Serum</h3>
+      <p>Glowing skin guaranteed. Only Ksh 950.</p>
+      <div class="actions">
+        <div class="dropdown">
+          <span class="btn">Contact Seller</span>
+          <div class="dropdown-content">
+            <a href="https://wa.me/254790732098?text=Hi Brandon, I’m interested in the Vitamin C Serum.">WhatsApp</a>
+            <a href="mailto:brandongatimu212@gmail.com?subject=Vitamin C Serum">Email</a>
+          </div>
+        </div>
+        <a href="#" class="btn" onclick="showForm('Vitamin C Serum')">Buy Now</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://i.imgur.com/k5dZ5S2.jpg" alt="Product 6">
+      <h3>Digital BP Monitor</h3>
+      <p>Check pressure anytime, from home. Ksh 2,999.</p>
+      <div class="actions">
+        <div class="dropdown">
+          <span class="btn">Contact Seller</span>
+          <div class="dropdown-content">
+            <a href="https://wa.me/254790732098?text=Hi Brandon, I’m interested in the Digital BP Monitor.">WhatsApp</a>
+            <a href="mailto:brandongatimu212@gmail.com?subject=BP Monitor">Email</a>
+          </div>
+        </div>
+        <a href="#" class="btn" onclick="showForm('Digital BP Monitor')">Buy Now</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://i.imgur.com/Lgn7Fau.jpg" alt="Product 7">
+      <h3>Wireless Mouse</h3>
+      <p>Silent click, rechargeable. Perfect for work. Ksh 1,200.</p>
+      <div class="actions">
+        <div class="dropdown">
+          <span class="btn">Contact Seller</span>
+          <div class="dropdown-content">
+            <a href="https://wa.me/254790732098?text=Hi Brandon, I’m interested in the Wireless Mouse.">WhatsApp</a>
+            <a href="mailto:brandongatimu212@gmail.com?subject=Wireless Mouse">Email</a>
+          </div>
+        </div>
+        <a href="#" class="btn" onclick="showForm('Wireless Mouse')">Buy Now</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://i.imgur.com/NKvRjLD.jpg" alt="Product 8">
+      <h3>Power Bank 10,000mAh</h3>
+      <p>Fast charging. Slim design. From Ksh 1,500.</p>
+      <div class="actions">
+        <div class="dropdown">
+          <span class="btn">Contact Seller</span>
+          <div class="dropdown-content">
+            <a href="https://wa.me/254790732098?text=Hi Brandon, I’m interested in the Power Bank.">WhatsApp</a>
+            <a href="mailto:brandongatimu212@gmail.com?subject=Power Bank">Email</a>
+          </div>
+        </div>
+        <a href="#" class="btn" onclick="showForm('Power Bank')">Buy Now</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ✅ ADD MORE PRODUCTS AS NEEDED... -->
-
-<section>
-  <h2 style="text-align:center;">📝 Order Request Form</h2>
-  <div id="confirmation">✅ Order received! We'll contact you shortly.</div>
-  <form id="orderForm" action="https://formsubmit.co/brandongatimu212@gmail.com" method="POST" onsubmit="showConfirmation()">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="text" name="product" id="productInput" placeholder="Product Name" readonly required>
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <input type="text" name="phone" placeholder="Phone Number (Mpesa)" required>
-    <textarea name="message" placeholder="Delivery location & any other info..." required></textarea>
-    <button type="submit">Send Order</button>
+<!-- ORDER FORM -->
+<div id="order-form">
+  <h2 style="text-align:center;">📝 Complete Your Order</h2>
+  <form action="https://formsubmit.co/brandongatimu212@gmail.com" method="POST" onsubmit="orderConfirmed()">
+    <input type="hidden" id="product" name="Product">
+    <input type="text" name="Name" placeholder="Your Name" required>
+    <input type="email" name="Email" placeholder="Your Email" required>
+    <input type="text" name="Phone" placeholder="Phone Number" required>
+    <textarea name="Message" placeholder="Extra info (location, color, size, etc)" required></textarea>
+    <select name="Delivery Rate" required>
+      <option value="">Select Delivery Option</option>
+      <option value="Within CBD – Free">Within CBD – Free</option>
+      <option value="Within Nairobi – Ksh 250">Within Nairobi – Ksh 250</option>
+      <option value="Parcel – Ksh 600">Parcel – Ksh 600</option>
+    </select>
+    <button type="submit">Confirm Order</button>
   </form>
-</section>
+</div>
+
+<!-- Confirmation -->
+<script>
+  function showForm(productName) {
+    document.getElementById('product').value = productName;
+    document.getElementById('order-form').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('order-form').style.display = 'block';
+  }
+
+  function orderConfirmed() {
+    alert("✅ Your order has been received! Brandon will contact you shortly.");
+  }
+</script>
 
 <footer>
   Contact: <a href="mailto:brandongatimu212@gmail.com">brandongatimu212@gmail.com</a> |
